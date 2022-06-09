@@ -11,7 +11,7 @@
     "data": [
         "security/ir.model.access.csv",
         # "templates/assets.xml",
-        "views/ir_ui_customi_field_filter_views.xml",
+        "views/ir_ui_custom_field_filter_views.xml",
     ],
     "assets": {
         'web.assets_backend': [
