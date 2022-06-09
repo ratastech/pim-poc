@@ -10,9 +10,14 @@
     "demo": ["demo/demo_ir_ui_custom_field_filter.xml"],
     "data": [
         "security/ir.model.access.csv",
-        "templates/assets.xml",
-        "views/ir_ui_custom_field_filter_views.xml",
+        # "templates/assets.xml",
+        "views/ir_ui_customi_field_filter_views.xml",
     ],
+    "assets": {
+        'web.assets_backend': [
+            '/base_search_custom_field_filter/static/src/js/search_bar_autocomplete_sources.js',
+        ],
+    },
     "depends": ["web"],
     "license": "AGPL-3",
     "installable": True,
