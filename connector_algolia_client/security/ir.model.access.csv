@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+user_access_algolia_application,user_access_algolia_application,model_algolia_application,,1,0,0,0
+user_access_algolia_index,user_access_algolia_index,model_algolia_index,,1,0,0,0
+user_access_index_history,user_access_index_history,model_index_history,,1,0,0,0
+manager_access_algolia_application,manager_access_algolia_application,model_algolia_application,connector_algolia_client.group_manager,0,1,1,1
+manager_access_algolia_index,manager_access_algolia_index,model_algolia_index,connector_algolia_client.group_manager,0,1,1,1
+manager_access_index_history,manager_access_index_history,model_index_history,connector_algolia_client.group_manager,0,1,1,1

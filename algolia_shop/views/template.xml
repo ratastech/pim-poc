@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="algo_shop" name="Shop">
+      <t t-call="website.layout">
+        <div id="wrap" class="algo-shop-engine">
+          <div class="container oe_website_sale" id="container-algolia">
+            <input type="hidden" id="shop-details"
+                   t-att-data-category-route="category"
+                   t-att-data-search="search"
+                   t-att-data-page="page"
+                   t-att-data-attribute-name="attribute_name"
+                   t-att-data-depth-category="max_depth_category"
+                   t-att-data-attribute-line-name="attribute_line_name_data"
+                   t-att-data-type-attribute="type_attribute"
+            />
+            <div class="products_pager form-inline flex-md-nowrap justify-content-between justify-content-md-center">
+              <div id="hit-per-page" class="m-0 mt-2 ml-md-2"></div>
+              <div id="searchbox" class="o_wsale_products_searchbar_form w-100 w-md-auto mt-2"></div>
+              <div id="pagination" class="pagination m-0 mt-2 ml-md-2"></div>
+              <div id="sort-by" class="m-0 mt-2 ml-md-2"></div>
+            </div>
+            <div class="stat_container">
+              <div id="stats"></div>
+            </div>
+            <div class="row o_wsale_products_main_row">
+              <div class="col-lg-3">
+                <div>
+                  <div class="ais-Panel">
+                    <t>
+                      <div class="ais-Panel-header">
+                        <span>Filter</span>
+                      </div>
+                      <div class="ais-Panel-body">
+                        <div>
+                          <div class="ais-RefinementList">
+                            <div id="hierarchical-menu"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </t>
+                    <t t-set="attribute_line_name" t-value="json.loads(attribute_line_name_data)"/>
+                    <t t-foreach="attribute_line_name" t-as="attribute">
+                      <div class="aisWrapperPanel">
+                      <div class="ais-Panel-header">
+                        <span t-esc="attribute[0]"></span>
+                      </div>
+                      <div t-att-id="attribute[1].replace(' ','_').replace('+','_').replace('(','_').replace(')','_')" class="ais-Panel-body">
+
+                            <!--<div t-att-id="attribute[1].replace(' ','_').replace('+','_').replace('(','_').replace(')','_')"></div>-->
+
+                      </div>
+                      </div>
+                    </t>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div id="hits"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </t>
+    </template>
+  </data>
+</odoo>

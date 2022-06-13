@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="view_website_form_inherit" model="ir.ui.view">
+      <field name="name">view.website.form.inherit</field>
+      <field name="model">website</field>
+      <field name="inherit_id" ref="website.view_website_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//group[@name='other']" position="after">
+          <group>
+            <group string="Algolia">
+              <field name="algolia_app_id"/>
+              <field name="algolia_index_id" domain="[('algolia_app_id','=',algolia_app_id)]"/>
+            </group>
+          </group>
+        </xpath>
+      </field>
+    </record>
+    <menuitem id="website_menu" name="Website" parent="connector_algolia_client.algolia_menu_root"
+              action="website.action_website_list" sequence="3"/>
+    <menuitem id="product_menu" name="Product" parent="connector_algolia_client.algolia_menu_root"
+              action="website_sale.product_template_action_website" sequence="2"/>
+  </data>
+</odoo>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="algolia_index_view_form" model="ir.ui.view">
+      <field name="name">algolia.index.view.form</field>
+      <field name="model">algolia.index</field>
+      <field name="arch" type="xml">
+        <form string="algolia_index_form">
+          <header>
+            <button name="init_indexation"
+                    attrs="{'invisible': ['|',('from_algolia','=',True),('online','=',True)]}"
+                    string="Init indexation" type="object" class="oe_highlight"/>
+            <button name="init_indexation_manually"
+                    attrs="{'invisible': ['|',('from_algolia','=',True),('online','=',True)]}"
+                    string="Init indexation manually" type="object" class="oe_highlight"/>
+            <button name="action_export_data"
+                    string="Download JSON" type="object" class="oe_highlight"/>
+            <button name="update_index"
+                    attrs="{'invisible': ['|',('from_algolia','=',True),('online','=',False)]}"
+                    string="Update indexation" type="object" class="oe_highlight"/>
+            <button name="configure_index"
+                    attrs="{'invisible': ['|',('from_algolia','=',True),('online','=',False)]}"
+                    string="Configure index" type="object" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <group>
+              <group string="Algolia details">
+                <field name="name" attrs="{'readonly': [('from_algolia','=',True)]}"/>
+                <field name="from_algolia" invisible="1"/>
+                <field name="online" readonly="1"/>
+                <field name="auto_indexation" attrs="{'invisible': [('from_algolia','=',True)]}"/>
+                <field name="product_count"/>
+              </group>
+              <group>
+                <field name="entries" readonly="1" attrs="{'invisible': [('from_algolia','=',False)]}"/>
+                <field name="data_size" readonly="1" attrs="{'invisible': [('from_algolia','=',False)]}"/>
+                <field name="file_size" readonly="1" attrs="{'invisible': [('from_algolia','=',False)]}"/>
+                <field name="algolia_app_id" invisible="1"/>
+              </group>
+            </group>
+            <notebook attrs="{'invisible': [('from_algolia','=',True)]}">
+              <page string="Products">
+                <group id="product-domain">
+                  <field name="product_domain" widget="domain" options="{'model': 'product.template'}"/>
+                </group>
+                <group>
+                  <field name="product_template_ids" nolabel="1">
+                    <tree>
+                      <field name="name"/>
+                      <field name="index_history_ids" widget="many2many_tags"/>
+                    </tree>
+                  </field>
+                </group>
+              </page>
+              <page id="delete_product" string="Product to be removed from the index">
+                <field name="delete_product_template_ids" nolabel="1">
+                  <tree>
+                    <field name="name"/>
+                    <field name="is_published"/>
+                  </tree>
+                </field>
+              </page>
+              <page id="setting" string="Setting">
+                <group>
+                  <group>
+                    <field name="use_virtual_replicas"/>
+                  </group>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="algolia_index_view_tree" model="ir.ui.view">
+      <field name="name">algolia.index.view.tree</field>
+      <field name="model">algolia.index</field>
+      <field name="arch" type="xml">
+        <tree string="algolia_index_tree">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="algolia_application_view_form" model="ir.ui.view">
+      <field name="name">algolia.application.view.form</field>
+      <field name="model">algolia.application</field>
+      <field name="arch" type="xml">
+        <form string="algolia_application_form">
+          <header>
+            <button name="action_get_existing_index" invisible="1"
+                    string="Get existing index" type="object" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button name="action_view_index"
+                      type="object"
+                      class="oe_stat_button"
+                      icon="fa-pencil-square-o">
+                <field name="index_count" widget="statinfo" string="Index"/>
+              </button>
+            </div>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="application_id"/>
+                <field name="admin_api_key"/>
+                <button name="test_client_admin_connection"
+                        type="object"
+                        string="Test Admin Connection"
+                        icon="fa-television"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="algolia_application_view_tree" model="ir.ui.view">
+      <field name="name">algolia.application.view.tree</field>
+      <field name="model">algolia.application</field>
+      <field name="arch" type="xml">
+        <tree string="algolia_application_tree">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+    <record id="algolia_application_action" model="ir.actions.act_window">
+      <field name="name">Algolia Connector</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">algolia.application</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="algolia_menu_root" name="Algolia Connector" sequence="10"/>
+    <menuitem id="algolia_application_menu" name="Algolia Connector" parent="algolia_menu_root"
+              action="algolia_application_action" sequence="1"/>
+  </data>
+</odoo>

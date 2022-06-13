@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="algolia_application_view_form_inherit" model="ir.ui.view">
+      <field name="name">algolia.application.view.form.inherit</field>
+      <field name="model">algolia.application</field>
+      <field name="inherit_id" ref="connector_algolia_client.algolia_application_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='admin_api_key']" position="after">
+          <field name="search_api_key"/>
+        </xpath>
+        <xpath expr="//button[@name='test_client_admin_connection']" position="after">
+          <button name="test_client_search_connection"
+                  type="object"
+                  string="Test Search Connection"
+                  icon="fa-television"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

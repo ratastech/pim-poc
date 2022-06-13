@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="product_template_only_form_inherit_view" model="ir.ui.view">
+      <field name="name">product.template.only.form.inherit.view</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+          <page string="Algolia">
+            <group>
+              <group>
+                <field name="algolia_objectId" string="ObjectID" readonly="1"/>
+                <field name="depth_category" readonly="1"/>
+              </group>
+            </group>
+            <group>
+              <field name="index_history_ids" readonly="1" nolabel="1">
+                <tree>
+                  <field name="name"/>
+                </tree>
+              </field>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>
