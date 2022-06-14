@@ -93,3 +93,4 @@ class AlgoliaWebsiteSale(WebsiteSale):
         default_code = kw.get('object_id')
         product_id = request.env['product.template'].search([('default_code', '=', default_code)])
         return self.cart_update(product_id=product_id.product_variant_id.id)
+
