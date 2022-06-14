@@ -23,7 +23,7 @@ class PimWebsiteSale(WebsiteSale):
         for attribute in attribute_ids:
             field = attribute.name
             if attribute.attribute_type in ('multiselect', 'select'):
-                custom_values[attribute.display_name] = product[field].sudo().mapped('name')
+                custom_values[attribute.field_description] = ", ".join(product[field].sudo().mapped('name'))
             else:
-                custom_values[field] = product[field]
+                custom_values[attribute.field_description] = product[field]
         return {**res, 'custom_values': custom_values}
