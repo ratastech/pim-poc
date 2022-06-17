@@ -26,13 +26,14 @@
     'summary': 'Use PIM FO',
     'author': 'eTech Consulting',
     'website': 'http://www.etechconsulting-mg.com',
-    'depends': ['website_sale'],
+    'depends': ['website_sale', 'odoo_marketplace'],
     'data': [
         # SECURITY
         # ASSETS
         # 'views/assets.xml',
         # VIEWS
         'views/templates.xml',
+        'views/product.xml',
     ],
     'qweb': [],
     'demo': [],
