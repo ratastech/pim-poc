@@ -20,10 +20,10 @@ odoo.define('algolia_shop.algolia_shop', function (require) {
         self.index_information = result;
         // refinementList
         var refinement = {}
-        var attribute_name = $('#shop-details').data('attribute-name');
-        attribute_name.forEach(attribute => { refinement[attribute[0]] = [attribute[1]] })
-        // attribute filter
-        var attribute_line_name = $('#shop-details').data('attribute-line-name');
+        // var attribute_name = $('#shop-details').data('attribute-name');
+        // attribute_name.forEach(attribute => { refinement[attribute[0]] = [attribute[1]] })
+        // // attribute filter
+        // var attribute_line_name = $('#shop-details').data('attribute-line-name');
         var hierarchical_depth = $('#shop-details').data('depth-category');
         var index_name = result.index
         var hierarchical_list = [];
@@ -45,16 +45,16 @@ odoo.define('algolia_shop.algolia_shop', function (require) {
           instantsearch.widgets.stats(self._get_widget_stats()),
           instantsearch.widgets.hitsPerPage(self._get_hits_per_page())
         ]
-        attribute_line_name.forEach(element => {
-          var type_attribute = $('#shop-details').data('type-attribute');
-          if (type_attribute.color.includes(element[0])) {
-            odoo_widget.push(instantsearch.widgets.refinementList(self._get_widget_refinementColor(element)))
-          } else if (type_attribute.select.includes(element[0])) {
-            odoo_widget.push(instantsearch.widgets.menuSelect(self._get_widget_menuSelect(element)))
-          } else {
-            odoo_widget.push(instantsearch.widgets.refinementList(self._get_widget_refinementOther(element)))
-          }
-        });
+        // attribute_line_name.forEach(element => {
+        //   var type_attribute = $('#shop-details').data('type-attribute');
+        //   if (type_attribute.color.includes(element[0])) {
+        //     odoo_widget.push(instantsearch.widgets.refinementList(self._get_widget_refinementColor(element)))
+        //   } else if (type_attribute.select.includes(element[0])) {
+        //     odoo_widget.push(instantsearch.widgets.menuSelect(self._get_widget_menuSelect(element)))
+        //   } else {
+        //     odoo_widget.push(instantsearch.widgets.refinementList(self._get_widget_refinementOther(element)))
+        //   }
+        // });
         odoo_widget.push(instantsearch.widgets.sortBy(self._get_widget_sortBy(index_name)))
         search.addWidgets(odoo_widget);
         search.start();

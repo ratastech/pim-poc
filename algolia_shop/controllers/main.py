@@ -60,11 +60,11 @@ class AlgoliaWebsiteSale(WebsiteSale):
                 'category': category.display_name.replace(' / ', ' > ') if category else False,
                 'search': search,
                 'page': page,
-                'attribute_name': json.dumps(attrib_values_name),
+                'attribute_name': json.dumps(dict()),
                 'max_depth_category': max_depth_category,
-                'attribute_line_name_data': json.dumps(attribute_line_name),
+                'attribute_line_name_data': json.dumps(dict()),
                 # 'json': json,
-                'type_attribute': json.dumps(type_attribute)
+                'type_attribute': json.dumps(dict())
             }
 
             return request.render("algolia_shop.algo_shop", values)
