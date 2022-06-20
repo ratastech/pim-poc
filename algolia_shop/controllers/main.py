@@ -10,6 +10,7 @@ from odoo import http
 from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.addons.http_routing.models.ir_http import slug
+import odoo.tools.safe_eval
 
 _logger = logging.getLogger(__name__)
 
@@ -55,13 +56,14 @@ class AlgoliaWebsiteSale(WebsiteSale):
                 attrib_values_name.append([attribut_id.name, value_id.name])
             # VALUES
             values = {
+
                 'category': category.display_name.replace(' / ', ' > ') if category else False,
                 'search': search,
                 'page': page,
                 'attribute_name': json.dumps(attrib_values_name),
                 'max_depth_category': max_depth_category,
                 'attribute_line_name_data': json.dumps(attribute_line_name),
-                'json': json,
+                # 'json': json,
                 'type_attribute': json.dumps(type_attribute)
             }
 
