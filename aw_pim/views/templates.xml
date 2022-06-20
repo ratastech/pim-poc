@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pim_product" name="Product pim" inherit_id="website_sale.product">
+            <xpath expr="//div[@id='o_product_terms_and_share']" position="after">
+                <div class="a-section a-spacing-small a-spacing-top-small">
+                    <table class="a-normal a-spacing-micro">
+                        <tbody>
+                            <tr t-foreach="custom_values" t-as="custom" class="a-spacing-small po-color">
+                                <td class="a-span3">
+                                    <span class="a-size-base a-text-bold" t-esc="custom"/>
+                                </td>
+                                <td class="a-span9">
+                                    <span class="a-size-base" t-esc="custom_values[custom]"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </xpath>
+    </template>
+
+</odoo>
