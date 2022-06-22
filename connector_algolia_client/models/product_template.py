@@ -125,7 +125,7 @@ class ProductTemplate(models.Model):
         rows = {
             "objectID": self.default_code if self.default_code else object_id,
             "name": self.name,
-            "image": self.env['website'].image_url(self, 'image', '512'),
+            "image": self.env['website'].image_url(self, 'image_512'),
             "price": self.list_price
         }
         # Get attribute line
