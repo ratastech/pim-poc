@@ -40,7 +40,7 @@ odoo.define('algolia_shop.algolia_shop', function (require) {
         var odoo_widget = [
           instantsearch.widgets.searchBox(self._get_widget_searchbox()),
           instantsearch.widgets.hits(self._get_widget_hits()),
-          instantsearch.widgets.hierarchicalMenu(self._get_widget_hierachicalMenu(hierarchical_list)),
+          // instantsearch.widgets.hierarchicalMenu(self._get_widget_hierachicalMenu(hierarchical_list)),
           instantsearch.widgets.pagination(self._get_widget_pagination()),
           instantsearch.widgets.stats(self._get_widget_stats()),
           instantsearch.widgets.hitsPerPage(self._get_hits_per_page())
